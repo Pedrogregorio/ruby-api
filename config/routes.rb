@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :index
-  namespace :usuario, defaults: { format: :json } do
-    resource :create
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :index
+      namespace :user do
+        resource :user, only: [:create]
+      end
+    end
   end
 end
