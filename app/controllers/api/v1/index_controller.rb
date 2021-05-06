@@ -1,6 +1,7 @@
-class IndexController < ApplicationController
+class Api::V1::IndexController < Api::ApiController
   def index
-    nome = { name: 'Gregorio' }
-    render json: nome
+    user = User.all
+    rende json: { error: 'Nenhum usuario encontrado' } unless user
+    render json: user
   end
 end
